@@ -15,8 +15,7 @@ interface BlogPostPageProps {
 }
 
 export async function generateMetadata(
-  { params }: BlogPostPageProps, 
-  parent?: ResolvingMetadata
+  { params }: { params: { id: string } }
 ): Promise<Metadata> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   if (!res.ok) return { title: 'Blog | Mi Sitio', description: 'Lee nuestros artículos del blog.' };
