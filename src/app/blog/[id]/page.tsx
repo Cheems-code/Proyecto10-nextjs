@@ -1,4 +1,4 @@
-import { Metadata} from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface Post {
@@ -6,12 +6,6 @@ interface Post {
   id: number;
   title: string;
   body: string;
-}
-
-interface BlogPostPageProps {
-  params: {
-    id: string;
-  };
 }
 
 export async function generateMetadata(
@@ -32,7 +26,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: { params: { id: string } }) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   if (!res.ok) return notFound();
 
