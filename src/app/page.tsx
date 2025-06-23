@@ -1,8 +1,16 @@
+import Head from 'next/head';
 import Card from '../components/Card';
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Inicio | Mi Sitio</title>
+        <meta name="description" content="Bienvenido a la página principal de Mi Sitio. Descubre nuestros servicios y novedades." />
+        <meta property="og:title" content="Inicio | Mi Sitio" />
+        <meta property="og:description" content="Bienvenido a la página principal de Mi Sitio. Descubre nuestros servicios y novedades." />
+        <meta property="og:type" content="website" />
+      </Head>
 
       <section className="bg-blue-450 text-white py-15 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Bienvenido Usuario</h1>

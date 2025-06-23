@@ -1,5 +1,6 @@
 'use client';
 
+import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -57,14 +58,23 @@ export default function BlogPostPage() {
   }
 
   return (
-    <section className="py-12">
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">{post.title}</h3>
-          <p className="text-gray-700 whitespace-pre-line">{post.body}</p>
-          <p className="text-sm text-gray-500 mt-4">ID del post: {id}</p>
+    <>
+      <Head>
+        <title>{post ? `${post.title} | Blog` : 'Blog | Mi Sitio'}</title>
+        <meta name="description" content={post ? post.body.slice(0, 150) : 'Lee nuestros artículos del blog.'} />
+        <meta property="og:title" content={post ? post.title : 'Blog | Mi Sitio'} />
+        <meta property="og:description" content={post ? post.body.slice(0, 150) : 'Lee nuestros artículos del blog.'} />
+        <meta property="og:type" content="article" />
+      </Head>
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">{post.title}</h3>
+            <p className="text-gray-700 whitespace-pre-line">{post.body}</p>
+            <p className="text-sm text-gray-500 mt-4">ID del post: {id}</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

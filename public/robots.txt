@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://proyecto10-nextjs.onrender.com/api/sitemap.xml
