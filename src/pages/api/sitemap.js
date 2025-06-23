@@ -1,5 +1,3 @@
-import { getAllBlogPosts } from '../../lib/posts'; // Simula tu fuente de datos
-
 export default async function handler(req, res) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://proyecto10-nextjs.onrender.com';
   const posts = await getAllBlogPosts(); // Debe devolver [{ id: 1 }, ...]
