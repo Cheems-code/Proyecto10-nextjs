@@ -1,3 +1,13 @@
+export const metadata = {
+  title: "Sobre Nosotros | Mi Sitio",
+  description: "Conoce más sobre nuestro equipo y nuestra misión en Mi Sitio.",
+  openGraph: {
+    title: "Sobre Nosotros | Mi Sitio",
+    description: "Conoce más sobre nuestro equipo y nuestra misión en Mi Sitio.",
+    type: "website",
+  },
+};
+
 import Card from '../../components/Card';
 
 export default function About() {

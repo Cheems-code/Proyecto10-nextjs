@@ -1,7 +1,8 @@
 'use client';
 
 import Head from 'next/head';
-import { useParams } from 'next/navigation';
+import { Metadata } from 'next';
+import { notFound, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Post {
@@ -9,6 +10,23 @@ interface Post {
   id: number;
   title: string;
   body: string;
+}
+
+// Genera los metadatos dinámicamente para cada post
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+  if (!res.ok) return { title: 'Blog | Mi Sitio', description: 'Lee nuestros artículos del blog.' };
+
+  const post: Post = await res.json();
+  return {
+    title: `${post.title} | Blog`,
+    description: post.body.slice(0, 150),
+    openGraph: {
+      title: `${post.title} | Blog`,
+      description: post.body.slice(0, 150),
+      type: 'article',
+    },
+  };
 }
 
 export default function BlogPostPage() {
