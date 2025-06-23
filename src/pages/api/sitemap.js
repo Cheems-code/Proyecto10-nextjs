@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     res.setHeader('Content-Type', 'application/xml');
     res.status(200).send(sitemap);
-  } catch (error) {
+  } catch {
     res.status(500).send('Internal Server Error');
   }
 }
