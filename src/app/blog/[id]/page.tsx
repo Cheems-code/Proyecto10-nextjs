@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface Post {
@@ -10,8 +10,10 @@ interface Post {
 
 // Genera los metadatos dinámicamente para cada post
 export async function generateMetadata(
-  { params }: { params: { id: string } }
+  props: { params: { id: string } },
+  parent?: ResolvingMetadata
 ): Promise<Metadata> {
+  const { params } = props;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   if (!res.ok) return { title: 'Blog | Mi Sitio', description: 'Lee nuestros artículos del blog.' };
 
