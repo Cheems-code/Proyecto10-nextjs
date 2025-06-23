@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
+        <meta name="google-site-verification" content="YmASwtVB_1HEqFl6ivggborQoY6vvXj2KLLQxERc1s4" />
         <title>Inicio | Mi Sitio</title>
         <meta name="description" content="Bienvenido a la página principal de Mi Sitio. Descubre nuestros servicios y novedades." />
         <meta property="og:title" content="Inicio | Mi Sitio" />
