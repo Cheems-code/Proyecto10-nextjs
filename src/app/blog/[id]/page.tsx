@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface Post {
@@ -6,24 +5,6 @@ interface Post {
   id: number;
   title: string;
   body: string;
-}
-
-export async function generateMetadata(
-  { params }: { params: { id: string } }
-): Promise<Metadata> {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
-  if (!res.ok) return { title: 'Blog | Mi Sitio', description: 'Lee nuestros artículos del blog.' };
-
-  const post: Post = await res.json();
-  return {
-    title: `${post.title} | Blog`,
-    description: post.body.slice(0, 150),
-    openGraph: {
-      title: `${post.title} | Blog`,
-      description: post.body.slice(0, 150),
-      type: 'article',
-    },
-  };
 }
 
 export default async function BlogPostPage({ params }: { params: { id: string } }) {
