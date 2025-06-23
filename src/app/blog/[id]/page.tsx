@@ -1,8 +1,5 @@
-'use client';
-
-import Head from 'next/head';
 import { Metadata } from 'next';
-import { notFound, useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Post {
