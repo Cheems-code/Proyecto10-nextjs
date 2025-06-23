@@ -9,7 +9,9 @@ interface Post {
 }
 
 // Genera los metadatos dinámicamente para cada post
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: { id: string } }
+): Promise<Metadata> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   if (!res.ok) return { title: 'Blog | Mi Sitio', description: 'Lee nuestros artículos del blog.' };
 
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   };
 }
 
-export default async function BlogPostPage({ params }) {
+export default async function BlogPostPage({ params }: { params: { id: string } }) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   if (!res.ok) return notFound();
 
