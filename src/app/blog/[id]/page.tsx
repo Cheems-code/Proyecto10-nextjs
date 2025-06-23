@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 interface Post {
   userId: number;
